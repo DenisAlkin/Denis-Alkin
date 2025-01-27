@@ -8,98 +8,124 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             line-height: 1.6;
             background-color: #f4f4f9;
             color: #333;
         }
-        header {
-            background: #333;
-            color: #fff;
-            padding: 1rem 0;
-            text-align: center;
-        }
         .container {
             max-width: 800px;
             margin: auto;
-            padding: 1rem;
             background: #fff;
+            padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        h1, h2 {
+        h1 {
+            font-size: 2.5rem;
+            color: #222;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 1.5rem;
             color: #444;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+            margin-top: 20px;
         }
-        .toggle {
-            color: #007BFF;
-            cursor: pointer;
-            text-decoration: underline;
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
         }
-        .hidden {
-            display: none;
+        .profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
         }
-        footer {
-            text-align: center;
-            margin-top: 2rem;
-            font-size: 0.9rem;
-            color: #555;
+        .profile img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-right: 20px;
+            object-fit: cover;
+        }
+        .contact-info, .key-competencies, .work-experience, .education, .skills {
+            margin-bottom: 20px;
+        }
+        p {
+            margin: 5px 0;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Denis Alkin - Resume</h1>
-        <p>Professional achievements and details</p>
-    </header>
-
     <div class="container">
-        <h2>About Me</h2>
-        <p>Experienced professional in hospitality and property management with over 12 years of experience.</p>
+        <div class="profile">
+            <img src="photo.jpg" alt="Denis Alkin">
+            <div>
+                <h1>Denis Alkin</h1>
+                <p><strong>Objective:</strong> Hotel Manager, Operations Director, Financial Director</p>
+                <p><strong>Expected Salary:</strong> $5,000/month (Annual: $60,000)</p>
+            </div>
+        </div>
 
-        <h2>Work Experience</h2>
-        <ul>
-            <li>
-                <strong>General Manager</strong> - Bali Property Management (2024 - Present)
-                <p class="toggle" onclick="toggleDetails('details1')">[Show More]</p>
-                <div id="details1" class="hidden">
-                    <p>Overseeing operations of 31 villas. Managing pricing strategies, staff access controls, and PMS system implementation.</p>
-                    <p>Achievements: Increased RevPAR by 49% in the first month, optimized ADR to 587K, and improved occupancy to 71%.</p>
-                </div>
-            </li>
-            <li>
-                <strong>Financial Director</strong> - PT SOLAR PROPERTY BALI (2022 - 2024)
-                <p class="toggle" onclick="toggleDetails('details2')">[Show More]</p>
-                <div id="details2" class="hidden">
-                    <p>Developed financial models, managed reporting systems, and trained staff in operational standards.</p>
-                    <p>Achievements: Expanded the property portfolio from 25 to 58 villas, creating tailored financial strategies for each.</p>
-                </div>
-            </li>
-        </ul>
+        <div class="contact-info">
+            <h2>Contact Information</h2>
+            <p>Phone: +1 702 572 32 14</p>
+            <p>Telegram: @denis_alkin</p>
+            <p>WhatsApp: +7 918 107 56 46</p>
+            <p>Email: denis-alkin@mail.ru</p>
+            <p>Location: USA, Florida, North Miami</p>
+        </div>
 
-        <h2>Certificates</h2>
-        <ul>
-            <li><a href="certificates/certificate1.pdf" target="_blank">Certificate in Hospitality Management</a></li>
-            <li><a href="certificates/certificate2.pdf" target="_blank">Advanced Financial Modeling</a></li>
-        </ul>
+        <div class="key-competencies">
+            <h2>Key Competencies</h2>
+            <ul>
+                <li>Financial flow management and investment projects.</li>
+                <li>Development and implementation of reporting systems (USALI).</li>
+                <li>Business process optimization and KPI performance control.</li>
+                <li>Personnel management, including recruitment and training.</li>
+                <li>Experience working with international markets.</li>
+                <li>Process automation using modern CRM and PMS systems.</li>
+                <li>Financial and economic activity management, including budgeting.</li>
+            </ul>
+        </div>
 
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:denis.alkin@example.com">denis.alkin@example.com</a></p>
-        <p>LinkedIn: <a href="https://linkedin.com/in/denisalkin" target="_blank">linkedin.com/in/denisalkin</a></p>
+        <div class="work-experience">
+            <h2>Work Experience</h2>
+            <p><strong>PT SOLAR PROPERTY BALI</strong> (Indonesia) - General Director (May 2024 – December 2024)</p>
+            <ul>
+                <li>Management of the company’s operational activities.</li>
+                <li>Optimization of pricing policies, resulting in significant growth in RevPAR and ADR by 40% in just three months.</li>
+                <li>Development of an automated rate sheet system for dynamic pricing.</li>
+                <li>Successfully expanded the number of managed properties from 25 to 58 within six months.</li>
+                <li>Attracted $500,000 in new investments.</li>
+                <li>Implemented an automated reporting system for investment property management.</li>
+            </ul>
+
+            <p><strong>Bali Invest Villas (Bali Invest Club)</strong> (Indonesia) - Financial Director (May 2023 – April 2024)</p>
+            <ul>
+                <li>Worked closely with owners to restructure the company, achieving significant results, including the expansion of the property portfolio to 61 units (10 rooms, 40 apartments, and 11 villas), enhancing stability and competitiveness.</li>
+                <li>Developed financial models and managed investment projects.</li>
+                <li>Negotiated and signed contracts with investors.</li>
+                <li>Introduced and managed financial reporting systems based on USALI standards.</li>
+                <li>Controlled and optimized business processes in all company departments.</li>
+            </ul>
+        </div>
+
+        <div class="education">
+            <h2>Education</h2>
+            <ul>
+                <li>Bachelor's Degree: Industrial and Civil Construction, Sochi State University (2015)</li>
+                <li>Master's Degree: Human Resource Management, Academy of Marketing and Social-Informational Technologies, Krasnodar (2017)</li>
+            </ul>
+        </div>
+
+        <div class="skills">
+            <h2>Skills and Technologies</h2>
+            <p>Software Proficiency: Opera PMS, Micros, 1C: Accounting, 1C: Document Management, 1C: Enterprise 8, TNG, MS Excel, AutoCAD, Portier Software, Radiant1, Ezee Absolute Yanolja, GPT Chat (Advanced).</p>
+            <p>CRM Systems: Amo CRM, Asana, Realty Calendar.</p>
+            <p>Driver's License: Category B + Florida Driver License.</p>
+        </div>
     </div>
-
-    <footer>
-        <p>&copy; 2025 Denis Alkin. All rights reserved.</p>
-    </footer>
-
-    <script>
-        function toggleDetails(id) {
-            const element = document.getElementById(id);
-            if (element.classList.contains('hidden')) {
-                element.classList.remove('hidden');
-            } else {
-                element.classList.add('hidden');
-            }
-        }
-    </script>
 </body>
 </html>
