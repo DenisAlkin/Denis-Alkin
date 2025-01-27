@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denis Alkin - Resume</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 1rem;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #444;
+        }
+        .toggle {
+            color: #007BFF;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .hidden {
+            display: none;
+        }
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Denis Alkin - Resume</h1>
+        <p>Professional achievements and details</p>
+    </header>
+
+    <div class="container">
+        <h2>About Me</h2>
+        <p>Experienced professional in hospitality and property management with over 12 years of experience.</p>
+
+        <h2>Work Experience</h2>
+        <ul>
+            <li>
+                <strong>General Manager</strong> - Bali Property Management (2024 - Present)
+                <p class="toggle" onclick="toggleDetails('details1')">[Show More]</p>
+                <div id="details1" class="hidden">
+                    <p>Overseeing operations of 31 villas. Managing pricing strategies, staff access controls, and PMS system implementation.</p>
+                    <p>Achievements: Increased RevPAR by 49% in the first month, optimized ADR to 587K, and improved occupancy to 71%.</p>
+                </div>
+            </li>
+            <li>
+                <strong>Financial Director</strong> - PT SOLAR PROPERTY BALI (2022 - 2024)
+                <p class="toggle" onclick="toggleDetails('details2')">[Show More]</p>
+                <div id="details2" class="hidden">
+                    <p>Developed financial models, managed reporting systems, and trained staff in operational standards.</p>
+                    <p>Achievements: Expanded the property portfolio from 25 to 58 villas, creating tailored financial strategies for each.</p>
+                </div>
+            </li>
+        </ul>
+
+        <h2>Certificates</h2>
+        <ul>
+            <li><a href="certificates/certificate1.pdf" target="_blank">Certificate in Hospitality Management</a></li>
+            <li><a href="certificates/certificate2.pdf" target="_blank">Advanced Financial Modeling</a></li>
+        </ul>
+
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:denis.alkin@example.com">denis.alkin@example.com</a></p>
+        <p>LinkedIn: <a href="https://linkedin.com/in/denisalkin" target="_blank">linkedin.com/in/denisalkin</a></p>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Denis Alkin. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleDetails(id) {
+            const element = document.getElementById(id);
+            if (element.classList.contains('hidden')) {
+                element.classList.remove('hidden');
+            } else {
+                element.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
