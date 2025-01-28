@@ -254,90 +254,73 @@
             margin-top: 20px;
         }
         ul {
-            list-style-type: disc;
-            padding-left: 20px;
+            list-style: none;
+            padding-left: 0;
         }
-        p {
-            margin: 5px 0;
-        }
-        .certificates {
-            margin-top: 20px;
-        }
-        .certificate-entry {
+        ul li {
+            display: flex;
+            align-items: center;
             margin-bottom: 15px;
         }
-        .certificate-description {
-            display: none;
-            margin-top: 10px;
-            padding: 10px;
-            background-color: #e9ecef;
-            border-radius: 5px;
+        ul li img {
+            width: 40px;
+            height: auto;
+            margin-right: 15px;
         }
-        .certificate-title {
-            font-weight: 600;
-            cursor: pointer;
+        .certifications p {
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 8px;
         }
     </style>
-    <script>
-        function toggleDescription(id) {
-            const element = document.getElementById(id);
-            if (element.style.display === "none" || element.style.display === "") {
-                element.style.display = "block";
-            } else {
-                element.style.display = "none";
-            }
-        }
-    </script>
 </head>
 <body>
     <div class="container">
-        <!-- Existing content here -->
-
-        <div class="certificates">
-            <h2>Certifications</h2>
-
-            <div class="certificate-entry">
-                <p class="certificate-title" onclick="toggleDescription('pmi-description')">1. Project Management Institute (PMI)</p>
-                <div class="certificate-description" id="pmi-description">
+        <h2>Certifying Organizations</h2>
+        <ul>
+            <li>
+                <img src="a.webp" alt="PMI Logo">
+                <div>
+                    <strong>Project Management Institute (PMI)</strong>
                     <p>LinkedIn Learning has been reviewed and approved by the PMI® Authorized Training Partner Program. This course qualifies for professional development units (PDUs).</p>
                 </div>
-            </div>
-
-            <div class="certificate-entry">
-                <p class="certificate-title" onclick="toggleDescription('nasba-description')">2. National Association of State Boards of Accountancy (NASBA)</p>
-                <div class="certificate-description" id="nasba-description">
+            </li>
+            <li>
+                <img src="b.jpg" alt="NASBA Logo">
+                <div>
+                    <strong>National Association of State Boards of Accountancy (NASBA)</strong>
                     <p>To earn CPE credits, the learner is expected to complete all videos, chapter quizzes, and a final exam within one year. The final exam requires a score of 70% or higher. LinkedIn Learning is registered with NASBA as a sponsor of continuing professional education.</p>
                 </div>
-            </div>
-
-            <div class="certificate-entry">
-                <p class="certificate-title" onclick="toggleDescription('comptia-description')">3. CompTIA®</p>
-                <div class="certificate-description" id="comptia-description">
+            </li>
+            <li>
+                <img src="c.jpg" alt="CompTIA Logo">
+                <div>
+                    <strong>CompTIA®</strong>
                     <p>LinkedIn Learning is an authorized CompTIA Partner, offering training for continuing education units toward A+, Network+, and Cloud+. CompTIA exam vouchers are available at a 10% discount.</p>
                 </div>
-            </div>
-
-            <div class="certificate-entry">
-                <p class="certificate-title" onclick="toggleDescription('shrm-description')">4. Society for Human Resource Management (SHRM)</p>
-                <div class="certificate-description" id="shrm-description">
+            </li>
+            <li>
+                <img src="d.jpg" alt="SHRM Logo">
+                <div>
+                    <strong>Society for Human Resource Management (SHRM)</strong>
                     <p>LinkedIn Learning is registered with SHRM to offer SHRM-CP or SHRM-SCP professional development credits (PDCs).</p>
                 </div>
-            </div>
-
-            <div class="certificate-entry">
-                <p class="certificate-title" onclick="toggleDescription('hrci-description')">5. HR Certification Institute (HRCI)</p>
-                <div class="certificate-description" id="hrci-description">
+            </li>
+            <li>
+                <img src="e.png" alt="HRCI Logo">
+                <div>
+                    <strong>HR Certification Institute (HRCI)</strong>
                     <p>HRCI preapproved this program for general recertification credits towards aPHR™, PHR®, SPHR®, and GPHR® certifications.</p>
                 </div>
-            </div>
-
-            <div class="certificate-entry">
-                <p class="certificate-title" onclick="toggleDescription('iiba-description')">6. International Institute of Business Analysis (IIBA)</p>
-                <div class="certificate-description" id="iiba-description">
-                    <p>LinkedIn Learning is an approved IIBA® Endorsed Education Provider for CBAP® and CCBA® certifications, assisting learners with continuing development units (CDUs).</p>
+            </li>
+            <li>
+                <img src="f.jpg" alt="IIBA Logo">
+                <div>
+                    <strong>International Institute of Business Analysis (IIBA)</strong>
+                    <p>LinkedIn Learning is an approved IIBA® Endorsed Education Provider for CCBA® and CBAP® certifications, assisting learners with continuing development units (CDUs).</p>
                 </div>
-            </div>
-        </div>
+            </li>
+        </ul>
     </div>
 </body>
 </html>
