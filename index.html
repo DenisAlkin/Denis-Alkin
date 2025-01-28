@@ -222,7 +222,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certifying Organizations</title>
+    <title>Denis Alkin - Resume</title>
     <style>
         body {
             font-family: 'Montserrat', Arial, sans-serif;
@@ -266,7 +266,6 @@
             background: rgba(0, 0, 0, 0.8);
             justify-content: center;
             align-items: center;
-            touch-action: pan-y;
         }
         .modal-content {
             position: relative;
@@ -275,8 +274,8 @@
             text-align: center;
         }
         .modal-content img {
-            max-width: 100%;
-            max-height: 100%;
+            max-width: 80%;
+            max-height: 80%;
         }
         .close {
             position: absolute;
@@ -306,17 +305,17 @@
     <div class="container">
         <h2>Certifying Organizations</h2>
 
-        <div class="organization" data-images="PMI_1.jpg,PMI_2.jpg">
+        <div class="organization" data-images="Project Management Institute (PMI)® 2_page-0001.jpg,Project Management Institute (PMI)®_page-0001.jpg">
             <img src="a.webp" alt="PMI">
             <span>Project Management Institute (PMI)</span>
         </div>
 
-        <div class="organization" data-images="NASBA_1.jpg">
+        <div class="organization" data-images="National Association of State Boards of Accountancy (NASBA)_page-0001.jpg">
             <img src="b.jpg" alt="NASBA">
             <span>National Association of State Boards of Accountancy (NASBA)</span>
         </div>
 
-        <div class="organization" data-images="CompTIA_1.jpg">
+        <div class="organization" data-images="CompTIA®_page-0001.jpg">
             <img src="c.jpg" alt="CompTIA">
             <span>CompTIA</span>
         </div>
@@ -336,7 +335,7 @@
             <span>International Institute of Business Analysis (IIBA)</span>
         </div>
 
-        <div class="organization" data-images="LinkedIn_1.jpg,LinkedIn_2.jpg,LinkedIn_3.jpg">
+        <div class="organization" data-images="LinkedIn Learning Certificate_page-0001.jpg,LinkedIn Learning Certificate 3_page-0001.jpg,LinkedIn Learning Certificate 2_page-0001.jpg">
             <img src="L.png" alt="LinkedIn">
             <span>LinkedIn</span>
         </div>
@@ -361,10 +360,6 @@
 
         let images = [];
         let currentIndex = 0;
-
-        // Add swipe detection variables
-        let startX = 0;
-        let endX = 0;
 
         organizations.forEach(org => {
             org.addEventListener('click', () => {
@@ -393,32 +388,35 @@
             modalImage.src = images[currentIndex];
         }
 
-        // Swipe detection
-        modal.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-        });
+        modal.addEventListener('touchstart', handleTouchStart, false);
+        modal.addEventListener('touchmove', handleTouchMove, false);
 
-        modal.addEventListener('touchend', (e) => {
-            endX = e.changedTouches[0].clientX;
-            handleSwipe();
-        });
+        let xStart = null;
 
-        function handleSwipe() {
-            if (startX - endX > 50) {
-                // Swipe left
-                next.click();
-            } else if (endX - startX > 50) {
-                // Swipe right
-                prev.click();
+        function handleTouchStart(evt) {
+            xStart = evt.touches[0].clientX;
+        }
+
+        function handleTouchMove(evt) {
+            if (!xStart) return;
+
+            let xEnd = evt.touches[0].clientX;
+            let xDiff = xStart - xEnd;
+
+            if (Math.abs(xDiff) > 50) {
+                if (xDiff > 0) {
+                    next.click();
+                } else {
+                    prev.click();
+                }
+                xStart = null;
             }
         }
 
         window.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') {
-                prev.click();
-            } else if (e.key === 'ArrowRight') {
-                next.click();
-            }
+            if (e.key === 'ArrowLeft') prev.click();
+            if (e.key === 'ArrowRight') next.click();
+            if (e.key === 'Escape') close.click();
         });
 
         window.addEventListener('click', (e) => {
@@ -429,7 +427,6 @@
     </script>
 </body>
 </html>
-
 
 
 
