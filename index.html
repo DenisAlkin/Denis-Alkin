@@ -222,14 +222,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certifications with Carousel</title>
+    <title>Certifying Organizations</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
         body {
             font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
             margin: 0;
             padding: 20px;
-            line-height: 1.6;
             background-color: #f4f4f9;
             color: #333;
         }
@@ -241,167 +240,144 @@
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        .certifications {
-            margin-top: 20px;
+        h2 {
+            font-size: 1.5rem;
+            color: #444;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
         }
         .certification {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
-            cursor: pointer;
+            margin-bottom: 15px;
         }
         .certification img {
-            width: 50px;
+            width: 40px;
             height: auto;
-            margin-right: 15px;
+            margin-right: 10px;
         }
         .carousel {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+        .carousel img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .carousel .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .overlay {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        .carousel img {
-            max-width: 80%;
-            max-height: 80%;
-        }
-        .carousel-controls {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .carousel-controls button {
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 2rem;
-            cursor: pointer;
-        }
-        .carousel-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        .carousel-counter {
-            position: absolute;
-            bottom: 20px;
-            color: #fff;
-            font-size: 1.2rem;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Certifying Organizations</h1>
-        <div class="certifications">
-            <div class="certification" data-cert="pmi">
-                <img src="PMI.png" alt="PMI">
-                <p>Project Management Institute (PMI)</p>
-            </div>
-            <div class="certification" data-cert="nasba">
-                <img src="NASBA.png" alt="NASBA">
-                <p>National Association of State Boards of Accountancy (NASBA)</p>
-            </div>
-            <div class="certification" data-cert="comptia">
-                <img src="CompTIA.png" alt="CompTIA">
-                <p>CompTIA</p>
-            </div>
-            <div class="certification" data-cert="shrm">
-                <img src="SHRM.png" alt="SHRM">
-                <p>Society for Human Resource Management (SHRM)</p>
-            </div>
-            <div class="certification" data-cert="hrci">
-                <img src="HRCI.png" alt="HRCI">
-                <p>HR Certification Institute (HRCI)</p>
-            </div>
-            <div class="certification" data-cert="iiba">
-                <img src="IIBA.png" alt="IIBA">
-                <p>International Institute of Business Analysis (IIBA)</p>
-            </div>
-            <div class="certification" data-cert="linkedin">
-                <img src="L.png" alt="LinkedIn">
-                <p>LinkedIn</p>
-            </div>
+        <h2>Certifying Organizations</h2>
+        <div class="certification" onclick="openCarousel('pmi')">
+            <img src="PMI.png" alt="PMI">
+            <span>Project Management Institute (PMI)</span>
+        </div>
+        <div class="certification" onclick="openCarousel('nasba')">
+            <img src="NASBA.png" alt="NASBA">
+            <span>National Association of State Boards of Accountancy (NASBA)</span>
+        </div>
+        <div class="certification" onclick="openCarousel('comptia')">
+            <img src="CompTIA.png" alt="CompTIA">
+            <span>CompTIA</span>
+        </div>
+        <div class="certification" onclick="openCarousel('shrm')">
+            <img src="SHRM.png" alt="SHRM">
+            <span>Society for Human Resource Management (SHRM)</span>
+        </div>
+        <div class="certification" onclick="openCarousel('hrci')">
+            <img src="HRCI.png" alt="HRCI">
+            <span>HR Certification Institute (HRCI)</span>
+        </div>
+        <div class="certification" onclick="openCarousel('iiba')">
+            <img src="IIBA.png" alt="IIBA">
+            <span>International Institute of Business Analysis (IIBA)</span>
+        </div>
+        <div class="certification" onclick="openCarousel('linkedin')">
+            <img src="L.png" alt="LinkedIn">
+            <span>LinkedIn</span>
         </div>
     </div>
 
-    <!-- Carousel -->
+    <div class="overlay" onclick="closeCarousel()"></div>
     <div class="carousel" id="carousel">
-        <button class="carousel-close" id="carouselClose">&times;</button>
-        <div class="carousel-controls">
-            <button id="prev">&#10094;</button>
-            <button id="next">&#10095;</button>
-        </div>
-        <img id="carouselImage" src="" alt="Certificate">
-        <div class="carousel-counter" id="carouselCounter"></div>
+        <span class="close" onclick="closeCarousel()">&times;</span>
+        <img id="carouselImage" src="" alt="Certification">
     </div>
 
     <script>
-        const certifications = {
-            pmi: ["PMI_1.jpg", "PMI_2.jpg"],
-            nasba: ["NASBA_1.jpg", "NASBA_2.jpg"],
-            comptia: ["CompTIA_1.jpg", "CompTIA_2.jpg"],
-            shrm: ["SHRM_1.jpg", "SHRM_2.jpg"],
-            hrci: ["HRCI_1.jpg", "HRCI_2.jpg"],
-            iiba: ["IIBA_1.jpg", "IIBA_2.jpg"],
-            linkedin: ["LinkedIn_1.jpg", "LinkedIn_2.jpg"]
+        const images = {
+            pmi: ['PMI1.jpg', 'PMI2.jpg'],
+            nasba: ['NASBA1.jpg', 'NASBA2.jpg'],
+            comptia: ['CompTIA1.jpg', 'CompTIA2.jpg'],
+            shrm: ['SHRM1.jpg', 'SHRM2.jpg'],
+            hrci: ['HRCI1.jpg', 'HRCI2.jpg'],
+            iiba: ['IIBA1.jpg', 'IIBA2.jpg'],
+            linkedin: ['LinkedIn1.jpg', 'LinkedIn2.jpg']
         };
 
-        const carousel = document.getElementById('carousel');
-        const carouselImage = document.getElementById('carouselImage');
-        const carouselCounter = document.getElementById('carouselCounter');
-        const carouselClose = document.getElementById('carouselClose');
-        const prev = document.getElementById('prev');
-        const next = document.getElementById('next');
+        let currentImageIndex = 0;
+        let currentCategory = '';
 
-        let currentImages = [];
-        let currentIndex = 0;
-
-        document.querySelectorAll('.certification').forEach(cert => {
-            cert.addEventListener('click', () => {
-                const certKey = cert.getAttribute('data-cert');
-                currentImages = certifications[certKey];
-                currentIndex = 0;
-                updateCarousel();
-                carousel.style.display = 'flex';
-            });
-        });
-
-        function updateCarousel() {
-            carouselImage.src = currentImages[currentIndex];
-            carouselCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+        function openCarousel(category) {
+            currentCategory = category;
+            currentImageIndex = 0;
+            updateCarousel();
+            document.querySelector('.overlay').style.display = 'block';
+            document.getElementById('carousel').style.display = 'block';
         }
 
-        prev.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-            updateCarousel();
-        });
+        function closeCarousel() {
+            document.querySelector('.overlay').style.display = 'none';
+            document.getElementById('carousel').style.display = 'none';
+        }
 
-        next.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % currentImages.length;
-            updateCarousel();
-        });
+        function updateCarousel() {
+            const carouselImage = document.getElementById('carouselImage');
+            const categoryImages = images[currentCategory];
+            carouselImage.src = categoryImages[currentImageIndex];
+        }
 
-        carouselClose.addEventListener('click', () => {
-            carousel.style.display = 'none';
-        });
+        function nextImage() {
+            const categoryImages = images[currentCategory];
+            currentImageIndex = (currentImageIndex + 1) % categoryImages.length;
+            updateCarousel();
+        }
+
+        function prevImage() {
+            const categoryImages = images[currentCategory];
+            currentImageIndex = (currentImageIndex - 1 + categoryImages.length) % categoryImages.length;
+            updateCarousel();
+        }
     </script>
 </body>
 </html>
+
         
         <div class="skills">
             <h2>Skills and Technologies</h2>
