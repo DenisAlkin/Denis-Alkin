@@ -224,13 +224,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Certifying Organizations</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
         body {
             font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
             background-color: #f4f4f9;
             color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
         }
         .container {
             max-width: 800px;
@@ -243,140 +244,160 @@
         h2 {
             font-size: 1.5rem;
             color: #444;
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 5px;
+            margin-bottom: 20px;
         }
-        .certification {
+        .organization {
             display: flex;
             align-items: center;
             margin-bottom: 15px;
-        }
-        .certification img {
-            width: 40px;
-            height: auto;
-            margin-right: 10px;
-        }
-        .carousel {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-        }
-        .carousel img {
-            width: 100%;
-            border-radius: 8px;
-        }
-        .carousel .close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 1.5rem;
             cursor: pointer;
         }
-        .overlay {
+        .organization img {
+            width: 40px;
+            height: 40px;
+            margin-right: 15px;
+        }
+        .modal {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            text-align: center;
+        }
+        .modal-content img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .navigation {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h2>Certifying Organizations</h2>
-        <div class="certification" onclick="openCarousel('pmi')">
-            <img src="PMI.png" alt="PMI">
+
+        <div class="organization" data-images="PMI_1.jpg,PMI_2.jpg">
+            <img src="PMI_logo.jpg" alt="PMI">
             <span>Project Management Institute (PMI)</span>
         </div>
-        <div class="certification" onclick="openCarousel('nasba')">
-            <img src="NASBA.png" alt="NASBA">
+
+        <div class="organization" data-images="NASBA_1.jpg">
+            <img src="NASBA_logo.jpg" alt="NASBA">
             <span>National Association of State Boards of Accountancy (NASBA)</span>
         </div>
-        <div class="certification" onclick="openCarousel('comptia')">
-            <img src="CompTIA.png" alt="CompTIA">
+
+        <div class="organization" data-images="CompTIA_1.jpg">
+            <img src="CompTIA_logo.jpg" alt="CompTIA">
             <span>CompTIA</span>
         </div>
-        <div class="certification" onclick="openCarousel('shrm')">
-            <img src="SHRM.png" alt="SHRM">
+
+        <div class="organization" data-images="SHRM_1.jpg">
+            <img src="SHRM_logo.jpg" alt="SHRM">
             <span>Society for Human Resource Management (SHRM)</span>
         </div>
-        <div class="certification" onclick="openCarousel('hrci')">
-            <img src="HRCI.png" alt="HRCI">
+
+        <div class="organization" data-images="HRCI_1.jpg">
+            <img src="HRCI_logo.jpg" alt="HRCI">
             <span>HR Certification Institute (HRCI)</span>
         </div>
-        <div class="certification" onclick="openCarousel('iiba')">
-            <img src="IIBA.png" alt="IIBA">
+
+        <div class="organization" data-images="IIBA_1.jpg">
+            <img src="IIBA_logo.jpg" alt="IIBA">
             <span>International Institute of Business Analysis (IIBA)</span>
         </div>
-        <div class="certification" onclick="openCarousel('linkedin')">
-            <img src="L.png" alt="LinkedIn">
+
+        <div class="organization" data-images="LinkedIn_1.jpg">
+            <img src="LinkedIn_logo.jpg" alt="LinkedIn">
             <span>LinkedIn</span>
         </div>
     </div>
 
-    <div class="overlay" onclick="closeCarousel()"></div>
-    <div class="carousel" id="carousel">
-        <span class="close" onclick="closeCarousel()">&times;</span>
-        <img id="carouselImage" src="" alt="Certification">
+    <div class="modal" id="modal">
+        <span class="close">&times;</span>
+        <span class="navigation prev">&#10094;</span>
+        <div class="modal-content">
+            <img id="modal-image" src="" alt="">
+        </div>
+        <span class="navigation next">&#10095;</span>
     </div>
 
     <script>
-        const images = {
-            pmi: ['PMI1.jpg', 'PMI2.jpg'],
-            nasba: ['NASBA1.jpg', 'NASBA2.jpg'],
-            comptia: ['CompTIA1.jpg', 'CompTIA2.jpg'],
-            shrm: ['SHRM1.jpg', 'SHRM2.jpg'],
-            hrci: ['HRCI1.jpg', 'HRCI2.jpg'],
-            iiba: ['IIBA1.jpg', 'IIBA2.jpg'],
-            linkedin: ['LinkedIn1.jpg', 'LinkedIn2.jpg']
-        };
+        const organizations = document.querySelectorAll('.organization');
+        const modal = document.getElementById('modal');
+        const modalImage = document.getElementById('modal-image');
+        const close = document.querySelector('.close');
+        const prev = document.querySelector('.prev');
+        const next = document.querySelector('.next');
 
-        let currentImageIndex = 0;
-        let currentCategory = '';
+        let images = [];
+        let currentIndex = 0;
 
-        function openCarousel(category) {
-            currentCategory = category;
-            currentImageIndex = 0;
-            updateCarousel();
-            document.querySelector('.overlay').style.display = 'block';
-            document.getElementById('carousel').style.display = 'block';
+        organizations.forEach(org => {
+            org.addEventListener('click', () => {
+                images = org.dataset.images.split(',');
+                currentIndex = 0;
+                updateModalImage();
+                modal.style.display = 'flex';
+            });
+        });
+
+        close.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        prev.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+            updateModalImage();
+        });
+
+        next.addEventListener('click', () => {
+            currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+            updateModalImage();
+        });
+
+        function updateModalImage() {
+            modalImage.src = images[currentIndex];
         }
 
-        function closeCarousel() {
-            document.querySelector('.overlay').style.display = 'none';
-            document.getElementById('carousel').style.display = 'none';
-        }
-
-        function updateCarousel() {
-            const carouselImage = document.getElementById('carouselImage');
-            const categoryImages = images[currentCategory];
-            carouselImage.src = categoryImages[currentImageIndex];
-        }
-
-        function nextImage() {
-            const categoryImages = images[currentCategory];
-            currentImageIndex = (currentImageIndex + 1) % categoryImages.length;
-            updateCarousel();
-        }
-
-        function prevImage() {
-            const categoryImages = images[currentCategory];
-            currentImageIndex = (currentImageIndex - 1 + categoryImages.length) % categoryImages.length;
-            updateCarousel();
-        }
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>
+
 
         
         <div class="skills">
