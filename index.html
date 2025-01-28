@@ -222,7 +222,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certifying Organizations</title>
+    <title>Denis Alkin - Resume</title>
     <style>
         body {
             font-family: 'Montserrat', Arial, sans-serif;
@@ -269,13 +269,13 @@
         }
         .modal-content {
             position: relative;
-            max-width: 90%;
-            max-height: 90%;
+            max-width: 80%;
+            max-height: 80%;
             text-align: center;
         }
         .modal-content img {
-            max-width: 100%;
-            max-height: 100%;
+            max-width: 80%;
+            max-height: 80%;
         }
         .close {
             position: absolute;
@@ -315,24 +315,9 @@
             <span>National Association of State Boards of Accountancy (NASBA)</span>
         </div>
 
-        <div class="organization" data-images="CompTIA®_page-0001.jpg.jpg">
+        <div class="organization" data-images="CompTIA®_page-0001.jpg">
             <img src="c.jpg" alt="CompTIA">
             <span>CompTIA</span>
-        </div>
-
-        <div class="organization" data-images="SHRM_1.jpg">
-            <img src="d.jpg" alt="SHRM">
-            <span>Society for Human Resource Management (SHRM)</span>
-        </div>
-
-        <div class="organization" data-images="HRCI_1.jpg">
-            <img src="e.png" alt="HRCI">
-            <span>HR Certification Institute (HRCI)</span>
-        </div>
-
-        <div class="organization" data-images="IIBA_1.jpg">
-            <img src="f.jpg" alt="IIBA">
-            <span>International Institute of Business Analysis (IIBA)</span>
         </div>
 
         <div class="organization" data-images="LinkedIn Learning Certificate_page-0001.jpg,LinkedIn Learning Certificate 3_page-0001.jpg,LinkedIn Learning Certificate 2_page-0001.jpg">
@@ -388,6 +373,37 @@
             modalImage.src = images[currentIndex];
         }
 
+        modal.addEventListener('touchstart', handleTouchStart, false);
+        modal.addEventListener('touchmove', handleTouchMove, false);
+
+        let xStart = null;
+
+        function handleTouchStart(evt) {
+            xStart = evt.touches[0].clientX;
+        }
+
+        function handleTouchMove(evt) {
+            if (!xStart) return;
+
+            let xEnd = evt.touches[0].clientX;
+            let xDiff = xStart - xEnd;
+
+            if (Math.abs(xDiff) > 50) {
+                if (xDiff > 0) {
+                    next.click();
+                } else {
+                    prev.click();
+                }
+                xStart = null;
+            }
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prev.click();
+            if (e.key === 'ArrowRight') next.click();
+            if (e.key === 'Escape') close.click();
+        });
+
         window.addEventListener('click', (e) => {
             if (e.target === modal) {
                 modal.style.display = 'none';
@@ -396,7 +412,6 @@
     </script>
 </body>
 </html>
-
 
 
         
