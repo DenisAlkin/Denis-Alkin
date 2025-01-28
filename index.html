@@ -13,20 +13,18 @@
             background-color: #f4f4f9;
             color: #333;
         }
-        .top-buttons {
-            width: 100%;
+        .header {
             text-align: center;
-            padding: 10px 0;
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
+            margin-top: 20px;
         }
-        .top-buttons a {
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .buttons a {
             display: inline-block;
-            margin: 0 10px;
             padding: 10px 20px;
             text-decoration: none;
             background-color: #007BFF;
@@ -36,11 +34,16 @@
             font-weight: bold;
             transition: background-color 0.3s ease;
         }
-        .top-buttons a:hover {
+        .buttons a:hover {
             background-color: #0056b3;
         }
+        .name {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 0;
+        }
         .container {
-            margin-top: 60px; /* Отступ для фиксации кнопок */
+            margin-top: 20px;
             padding: 20px;
             max-width: 800px;
             margin-left: auto;
@@ -52,13 +55,18 @@
     </style>
 </head>
 <body>
-    <div class="top-buttons">
-        <a href="Denis_Alkin.pdf" download="Denis Alkin.pdf">Download Resume (EN)</a>
-        <a href="Алкин_Денис_Дмитриевич.pdf" download="Алкин Денис Дмитриевич.pdf">Скачать резюме (RU)</a>
+    <div class="header">
+        <!-- Первая строка с кнопками -->
+        <div class="buttons">
+            <a href="Denis_Alkin.pdf" download="Denis Alkin.pdf">Download Resume (EN)</a>
+            <a href="Алкин_Денис_Дмитриевич.pdf" download="Алкин Денис Дмитриевич.pdf">Скачать резюме (RU)</a>
+        </div>
+
+        <!-- Вторая строка с именем и фамилией -->
+        <div class="name">Denis Alkin</div>
     </div>
 
     <div class="container">
-        <!-- Здесь остаётся весь ваш контент -->
 
 
 <!DOCTYPE html>
