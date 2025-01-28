@@ -12,40 +12,35 @@
             line-height: 1.6;
             background-color: #f4f4f9;
             color: #333;
-        }
-        .header {
             display: flex;
-            justify-content: flex-end;
+            justify-content: center;
             align-items: center;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            height: 100vh;
         }
-        .header a {
-            margin-left: 10px;
-            padding: 10px 20px;
+        .buttons-container {
+            text-align: center;
+        }
+        .buttons-container a {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 30px;
             text-decoration: none;
             background-color: #007BFF;
             color: white;
             border-radius: 5px;
+            font-size: 1rem;
             font-weight: bold;
             transition: background-color 0.3s ease;
         }
-        .header a:hover {
+        .buttons-container a:hover {
             background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <a href="Denis_Alkin.pdf" download="Denis Alkin.pdf">Download Resume (EN)</a>
-        <a href="Алкин_Денис_Дмитриевич.pdf" download="Алкин Денис Дмитриевич.pdf">Скачать резюме (RU)</a>
-    </div>
-
-    <div class="container">
-        <h1>Denis Alkin</h1>
-        <p>Welcome to my resume page! Select the language to download my resume.</p>
-        <!-- Additional content goes here -->
+    <div class="buttons-container">
+        <a href="Denis_Alkin.pdf" download="Denis_Alkin.pdf">Download Resume (EN)</a>
+        <a href="Алкин_Денис_Дмитриевич.pdf" download="Алкин_Денис_Дмитриевич.pdf">Скачать резюме (RU)</a>
     </div>
 </body>
 </html>
