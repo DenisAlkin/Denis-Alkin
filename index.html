@@ -266,6 +266,7 @@
             background: rgba(0, 0, 0, 0.8);
             justify-content: center;
             align-items: center;
+            touch-action: pan-y;
         }
         .modal-content {
             position: relative;
@@ -361,6 +362,10 @@
         let images = [];
         let currentIndex = 0;
 
+        // Add swipe detection variables
+        let startX = 0;
+        let endX = 0;
+
         organizations.forEach(org => {
             org.addEventListener('click', () => {
                 images = org.dataset.images.split(',');
@@ -388,6 +393,34 @@
             modalImage.src = images[currentIndex];
         }
 
+        // Swipe detection
+        modal.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+
+        modal.addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].clientX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (startX - endX > 50) {
+                // Swipe left
+                next.click();
+            } else if (endX - startX > 50) {
+                // Swipe right
+                prev.click();
+            }
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                prev.click();
+            } else if (e.key === 'ArrowRight') {
+                next.click();
+            }
+        });
+
         window.addEventListener('click', (e) => {
             if (e.target === modal) {
                 modal.style.display = 'none';
@@ -396,6 +429,7 @@
     </script>
 </body>
 </html>
+
 
 
 
