@@ -24,7 +24,7 @@
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            text-align: left; /* Весь текст выравниваем влево */
+            text-align: left;
         }
 
         /* Центрируем кнопки */
@@ -56,7 +56,7 @@
             font-size: 2rem;
             font-weight: bold;
             margin-bottom: 10px;
-            white-space: nowrap; /* Запрещает перенос на другую строку */
+            white-space: nowrap;
         }
 
         /* Сетка профиля */
@@ -72,6 +72,30 @@
             border-radius: 50%;
             object-fit: cover;
         }
+
+        /* Устанавливаем фиксированный размер для логотипов */
+        .contact-info img, .education img, .work-entry img, .organization img {
+            width: 20px; 
+            height: 20px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .work-entry img {
+            width: 50px; 
+            height: 50px;
+        }
+
+        .education img {
+            width: 50px;
+            height: auto;
+        }
+
+        .organization img {
+            width: 40px;
+            height: 40px;
+        }
+
     </style>
 </head>
 <body>
@@ -94,6 +118,7 @@
             <img src="photo_5467774761636589179_x.jpg" alt="Denis Alkin">
         </div>
 
+        <!-- Контактная информация -->
         <div class="contact-info">
             <h2>Contact Information</h2>
             <p><img src="phone.jpg" alt="Phone"> Phone: +1 702 572 32 14</p>
