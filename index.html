@@ -81,20 +81,17 @@
             vertical-align: middle;
         }
 
+         .work-entry {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
         .work-entry img {
-            width: 50px; 
+            width: 50px;
             height: 50px;
         }
- .work-header {
-       display: flex;
-       align-items: center;
-       gap: 10px; /* Отступ между логотипом и текстом */
-   }
 
-   .work-header img {
-       width: 50px; 
-       height: 50px;
-   }
         .education img {
             width: 50px;
             height: auto;
@@ -157,9 +154,9 @@
 
         <div class="work-experience">
             <h2>Work Experience</h2>
-          <div class="work-entry">
-    <div class="work-header">
-        <img src="Solar.png" alt="PT Solar Property Bali">
+
+            <div class="work-entry">
+                <img src="Solar.png" alt="PT Solar Property Bali">
         <p><strong>
     PT SOLAR PROPERTY BALI</strong> (Indonesia) - General Director (May 2024 – December 2024)</p> </div>
                     <ul>
@@ -326,7 +323,9 @@
         .next {
             right: 10px;
         }
-    </style>
+  </style>
+</head>
+<body>
     <div class="container">
         <h2>Certifying Organizations</h2>
 
@@ -363,8 +362,10 @@
         <div class="organization" data-images="LinkedIn Learning Certificate_page-0001.jpg,LinkedIn Learning Certificate 3_page-0001.jpg,LinkedIn Learning Certificate 2_page-0001.jpg">
             <img src="L.png" alt="LinkedIn">
             <span>LinkedIn</span>
-        
+        </div>
     </div>
+</body>
+</html>
 
     <div class="modal" id="modal">
         <span class="close">&times;</span>
