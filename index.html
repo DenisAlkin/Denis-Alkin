@@ -341,38 +341,97 @@
             <p>At PT SOLAR PROPERTY BALI, I confirmed and expanded upon the skills I acquired at Bali Invest Villas. In a short time, I mastered new tools, such as integrating modern PMS systems and automating pricing processes, which significantly improved management efficiency. This allowed me to enhance internal processes, strengthen the company’s market position, and train the team while implementing modern work standards.</p>
         </div>
     </div>
-// Отключение прокрутки при открытии модального окна
-function disableScroll() {
-    document.body.style.overflow = 'hidden';
-}
+ <script>
+    const organizations = document.querySelectorAll('.organization');
+    const modal = document.getElementById('modal');
+    const modalImage = document.getElementById('modal-image');
+    const close = document.querySelector('.close');
+    const prev = document.querySelector('.prev');
+    const next = document.querySelector('.next');
 
-// Включение прокрутки при закрытии модального окна
-function enableScroll() {
-    document.body.style.overflow = '';
-}
+    let images = [];
+    let currentIndex = 0;
 
-// Добавляем обработчики
-organizations.forEach(org => {
-    org.addEventListener('click', () => {
-        images = org.dataset.images.split(',');
-        currentIndex = 0;
-        updateModalImage();
-        modal.style.display = 'flex';
-        disableScroll(); // Отключаем скролл при открытии
-    });
-});
-
-close.addEventListener('click', () => {
-    modal.style.display = 'none';
-    enableScroll(); // Включаем скролл при закрытии
-});
-
-window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        modal.style.display = 'none';
-        enableScroll(); // Включаем скролл при клике вне окна
+    // Отключение прокрутки при открытии модального окна
+    function disableScroll() {
+        document.body.style.overflow = 'hidden';
     }
-});
+
+    // Включение прокрутки при закрытии модального окна
+    function enableScroll() {
+        document.body.style.overflow = '';
+    }
+
+    organizations.forEach(org => {
+        org.addEventListener('click', () => {
+            images = org.dataset.images.split(',');
+            currentIndex = 0;
+            updateModalImage();
+            modal.style.display = 'flex';
+            disableScroll(); // Отключаем прокрутку
+        });
+    });
+
+    close.addEventListener('click', () => {
+        modal.style.display = 'none';
+        enableScroll(); // Включаем прокрутку
+    });
+
+    prev.addEventListener('click', () => {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+        updateModalImage();
+    });
+
+    next.addEventListener('click', () => {
+        currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+        updateModalImage();
+    });
+
+    function updateModalImage() {
+        modalImage.src = images[currentIndex];
+    }
+
+    modal.addEventListener('touchstart', handleTouchStart, false);
+    modal.addEventListener('touchmove', handleTouchMove, false);
+
+    let xStart = null;
+
+    function handleTouchStart(evt) {
+        xStart = evt.touches[0].clientX;
+    }
+
+    function handleTouchMove(evt) {
+        if (!xStart) return;
+        let xEnd = evt.touches[0].clientX;
+        let xDiff = xStart - xEnd;
+
+        if (Math.abs(xDiff) > 50) {
+            if (xDiff > 0) {
+                next.click();
+            } else {
+                prev.click();
+            }
+            xStart = null;
+        }
+    }
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') prev.click();
+        if (e.key === 'ArrowRight') next.click();
+        if (e.key === 'Escape') {
+            modal.style.display = 'none';
+            enableScroll(); // Включаем прокрутку при закрытии по Esc
+        }
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            enableScroll(); // Включаем прокрутку при клике вне окна
+        }
+    });
+</script>
+
 
 </body>
 </html>
